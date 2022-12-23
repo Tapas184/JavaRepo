@@ -4,12 +4,10 @@ xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
 id="WebApp_ID" 
 version="4.0">
-  <display-name>EmployeeDBApp</display-name>
-  <welcome-file-list>
-    <welcome-file>Search.html</welcome-file>
-  </welcome-file-list>
   <!-- Server Configuration -->
   <servlet>
+    <servlet-name>emp</servlet-name>
+    <servlet-class>com.nt.servlet.EmployeeDbServlet</servlet-class>
     <init-param>
        <param-name>driverclass</param-name>
        <param-value>oracle.jdbc.driver.OracleDriver</param-value>
@@ -26,12 +24,15 @@ version="4.0">
         <param-name>pass</param-name>
         <param-value>routtapas1</param-value>
     </init-param>
-    <servlet-name>emp</servlet-name>
-    <servlet-class>com.nt.servlet.EmployeeDbServlet</servlet-class>
+  
   </servlet>
   <!-- Servlet mapping -->
   <servlet-mapping>
     <servlet-name>emp</servlet-name>
     <url-pattern>/edburl</url-pattern>
   </servlet-mapping>
+    <display-name>EmployeeDBApp</display-name>
+  <welcome-file-list>
+    <welcome-file>Search.html</welcome-file>
+  </welcome-file-list>
 </web-app>
