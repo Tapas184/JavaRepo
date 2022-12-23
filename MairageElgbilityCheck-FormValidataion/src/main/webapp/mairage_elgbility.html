@@ -1,0 +1,76 @@
+
+<h2 style="color: rgb(98, 54, 203); text-align: center;">Kindly
+	enter your details below</h2>
+<form action="mairageurl" method="POST"onsubmit="return validate(this)"><span id="systemerror"style="color:red"></span>
+	Name &nbsp; &nbsp;:- <input type="text" name="pname" placeholder="Enter Name" required/><span id="pnameError" style="color:red"></span><br> <br>
+	Address &nbsp;:- <input type="text" name="paddrs" placeholder="Enter Adress" required/><span id="paddrsError" style="color:red"></span><br> <br>
+	Age &nbsp;:- <input type="text" name="page" placeholder="Enter Age" required/><span id="pageError" style="color:red"></span>
+	<br>
+	
+	<br>
+	Select Gender :-
+	<input type="radio" name="pgender" value="Male" />Male
+	<input type="radio" name="pgender" value="Female" />Female
+	<input type="radio" name="pgender" value="Others" />Others
+	<br>
+	<span id="pgenderError" style="color:red"></span>
+	<br>
+	<input type="submit" value="Check" />
+	<input type="hidden" name="vflag"value="no"/>
+</form>
+<script language="JavaScript">
+	function validate(frm) {
+		document.getElementById("pnameError").innerHTML="";
+		document.getElementById("paddrsError").innerHTML="";
+		document.getElementById("pageError").innerHTML="";
+		document.getElementById("pgenderError").innerHTML="";
+		//create variables
+		let cname = frm.pname.value;
+		let addrs = frm.paddrs.value;
+		let age = frm.page.value;
+		let gender = frm.pgender.value;
+		let flag = true;
+		//write bussiness logic
+		if (cname == "") { //logic for name field
+			//alert("Kindly enter name");
+			document.getElementById("pnameError").innerHTML = "Error:Enter Person Name";
+			frm.pname.focus();
+			flag = false;
+		}
+		if (addrs == "") { // logic for address field
+			//alert("Enter your address ");
+			document.getElementById("paddrsError").innerHTML = "Error:Enter your address";
+			frm.paddrs.focus();
+			flag = false;
+		} else if (addrs.length <= 10) { //logic for address length check
+			//alert("Kindly Enter address more than 10 characters");
+			document.getElementById("paddrsError").innerHTML = "Error:Kindly Enter address more than 10 characters";
+			frm.paddrs.focus();
+			flag = false;
+		}
+		if (isNaN(age)) { // logic for age 
+			//alert("Kindly Enter numeric value");
+			document.getElementById("pageError").innerHTML = "Error:Kindly Enter numeric value";
+			frm.page.focus();
+			flag = false;
+		} else if (age<=0 || age>125) {
+			//alert("kindly enter age between 1 to 125");
+			document.getElementById("pageError").innerHTML = "Error:Kindly Enter age within 1 to 125";
+			frm.page.focus();
+			flag = false;
+		} else if (age == "") {
+			document.getElementById("pageError").innerHTML = "Error:kindly enter age between 1 to 125";
+			frm.page.focus();
+			flag = false;
+		}
+		if (gender == "") {
+			//alert("kindly select your gender");
+			document.getElementById("pgenderError").innerHTML = "Error:kindly select your gender";
+			flag = false;
+		}
+		 frm.vflag.value="yes";
+		return flag;
+    }
+      
+		
+</script>

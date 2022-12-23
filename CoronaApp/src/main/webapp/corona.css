@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+#corona{
+    background-color: rgb(196, 213, 255);
+    width: 320px;
+    height: 150px;
+    border: 2px solid;
+    text-align: center;
+}

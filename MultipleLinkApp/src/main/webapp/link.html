@@ -1,0 +1,61 @@
+<h1 style="color:blueviolet;text-align:center">
+    Work with multiple link</h1>
+<form action="linkurl"method="post"onsubmit="return validate(this)"><br>
+    
+    <table align="center" border="1px">
+   <tr>
+     <td bgcolor="pink">Value-1:</td>
+     <td bgcolor="pink" align="center"><input type="text" name="t1"/></td>
+   </tr>
+   <tr>
+    <td bgcolor="pink">Value-2:</td>
+    <td bgcolor="pink" align="center"><input type="text" name="t2"/ ></td>
+  </tr>
+  <tr>
+    <td bgcolor="orange" align="center"><input type="submit" value="Add" name="s1"/></td>
+    <td bgcolor="orange"><input type="submit" value="Sub"name="s1"/>&nbsp;&nbsp;<a href="linkurl?s1=link1">Get System Properties</a></td>
+ 
+  </tr>
+  <tr>
+    <td bgcolor="orange" align="center"><input type="submit" value="Mul" name="s1"/></td>
+    <td bgcolor="orange"><input type="submit" value="Div" name="s1"/>&nbsp;&nbsp;&nbsp;<a href="linkurl?s1=link2">Get Date&Time</a></td>
+  </tr>
+</table>
+<input type="hidden" name="vflag" value="no"/>
+</form>
+&nbsp;&nbsp;<span id="v1error" style="color:red"></span><br>
+&nbsp;&nbsp;<span id="v2error" style="color:red"></span>
+<script language="JavaScript">
+    function validate(frm){
+    	document.getElementById("v1error").innerHTML="";
+    	document.getElementById("v2error").innerHTML="";
+      let flag=true;
+      let vt1 = frm.t1.value;
+      let vt2 = frm.t2.value;
+      //write a logic for validate
+      if(vt1.length==0){
+        document.getElementById("v1error").innerHTML="Error: Kindly Enter numeric value in value-1";
+        //alert("Error: Kindly Enter numeric value in value-1");
+        frm.t1.focus();
+        flag=false;
+      }
+      if(isNaN(vt1)){
+        document.getElementById("v1error").innerHTML="Error: Value1 is not a number kindly enter number";
+        frm.t1.focus();
+        flag=false;
+      }
+    if(vt2.length==0){
+          document.getElementById("v2error").innerHTML="Error: Kindly Enter numeric value value-2";
+          frm.t2.focus();
+          flag=false;
+        }
+      if(isNaN(vt2)){
+        document.getElementById("v2error").innerHTML="Error: Value2 is not a number kindly enter number";
+        frm.t2.focus();
+        flag=false;
+      }
+      frm.vflag.value="yes";
+        return flag;
+    }
+ 
+</script>

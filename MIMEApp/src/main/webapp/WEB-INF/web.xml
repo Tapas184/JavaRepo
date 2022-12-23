@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+
+<!--web xml for html-->
+   <servlet>
+       <servlet-name>html</servlet-name>
+       <servlet-class>com.nt.servlet.HtmlServlet</servlet-class>
+   </servlet>
+   <!--Servlet mapping-->
+   <servlet-mapping>
+      <servlet-name>html</servlet-name>
+      <url-pattern>/html</url-pattern>
+   </servlet-mapping>
+
+   <!--web xml for xml-->
+   <servlet>
+       <servlet-name>xml</servlet-name>
+       <servlet-class>com.nt.servlet.XmlServlet</servlet-class>
+   </servlet>
+   <!--Servlet mapping-->
+   <servlet-mapping>
+      <servlet-name>xml</servlet-name>
+      <url-pattern>/xmlurl</url-pattern>
+   </servlet-mapping>
+
+      <!--web xml for plain-->
+   <servlet>
+       <servlet-name>plain</servlet-name>
+       <servlet-class>com.nt.servlet.PlainServlet</servlet-class>
+   </servlet>
+   <!--Servlet mapping-->
+   <servlet-mapping>
+      <servlet-name>plain</servlet-name>
+      <url-pattern>/plain</url-pattern>
+   </servlet-mapping>
+
+         <!--web xml for Msword-->
+   <servlet>
+       <servlet-name>msword</servlet-name>
+       <servlet-class>com.nt.servlet.MswordServlet</servlet-class>
+   </servlet>
+   <!--Servlet mapping-->
+   <servlet-mapping>
+      <servlet-name>msword</servlet-name>
+      <url-pattern>/msword</url-pattern>
+   </servlet-mapping>
+
+            <!--web xml for excel-->
+   <servlet>
+       <servlet-name>excel</servlet-name>
+       <servlet-class>com.nt.servlet.ExcelServlet</servlet-class>
+   </servlet>
+   <!--Servlet mapping-->
+   <servlet-mapping>
+      <servlet-name>excel</servlet-name>
+      <url-pattern>/excel</url-pattern>
+   </servlet-mapping>
+</web-app>
