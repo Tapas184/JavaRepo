@@ -6,8 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 public class EmployeeDbServlet extends HttpServlet {
+	
 	private static final String emp_Querry ="SELECT EMPNO,ENAME,HIREDATE,SAL FROM EMP WHERE EMPNO=?";
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -23,7 +24,7 @@ public class EmployeeDbServlet extends HttpServlet {
 	}
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		RequestDispatcher rd=req.getRequestDispatcher("/errorurl");
 		 PrintWriter pw = res.getWriter(); //create a print writer object
 		 //set content 
 		 res.setContentType("text/html");
@@ -32,12 +33,20 @@ public class EmployeeDbServlet extends HttpServlet {
 		 String url = sc.getInitParameter("url");
 		 String user = sc.getInitParameter("user");
 		 String pass = sc.getInitParameter("pass");
-		 int no = Integer.parseInt(req.getParameter("eno"));
+		 int no=0;
+		 try {
+		 no = Integer.parseInt(req.getParameter("eno"));
+		 }
+		 catch(NumberFormatException nfe) {
+			 nfe.printStackTrace();
+			 rd.forward(req, res);
+		 }
 		 try{
 			 Class.forName(driver);
 		 }
 		 catch(ClassNotFoundException cnf) {
 			 cnf.printStackTrace();
+			 rd.forward(req, res);
 		 }
 		 try(Connection con = DriverManager.getConnection(url,user,pass);
 				 PreparedStatement ps = con.prepareStatement(emp_Querry)){
@@ -72,11 +81,9 @@ public class EmployeeDbServlet extends HttpServlet {
 			 }//try-2
 			 
 		 }//try-1
-		catch(SQLException se) {
-			se.printStackTrace();
-		}//catch
 		 catch(Exception e) {
 			 e.printStackTrace();
+			 rd.forward(req, res);
 		 }//catch
 		 pw.println("<h4 style='text-align:center'><a href='Search.html'>Home</a></h4>");
 		 
