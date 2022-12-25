@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h3 style="color: blue;text-align: center;">Search box</h3>
+        <form action="searchurl" method="POST"onsubmit="return validate(this)">
+        <table border="1px" bgcolor="pink" align="center">
+            <tr>
+                <td>Search</td>
+                <td><input type="text" name="search" placeholder="Enter Search item"/></td>
+            </tr>
+            <tr>
+                <td>Select Searhc</td>
+                <td><input type="radio" name="ss" value="gs" checked/>Google
+                    <input type="radio" name="ss" value="bs"/>Bing
+                    <input type="radio" name="ss" value="ys"/>Yahoo!
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="submit" value="Submit"/>
+                </td>
+                <td align="center">
+                    <input type="reset" value="Reset"/>
+                </td>
+            </tr>
+        </table>
+        <span style="color:red" id="err"></span>
+        </form>
+    </body>
+</html>
+    <script language="javascript">
+function validate(frm){
+	document.getElementById("err").innerHTML="";
+	let ts= frm.search.value;
+	let flag=true;
+	if(ts==""){
+		document.getElementById("err").innerHTML="(Error:Kindly Enter something which you want to search)";
+		frm.search.focus();
+		flag=false;
+	}//if
+	return flag;
+}//function
+
+</script>
