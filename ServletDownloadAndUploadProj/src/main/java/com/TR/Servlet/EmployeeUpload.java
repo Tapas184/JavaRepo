@@ -2,6 +2,12 @@ package com.TR.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import javazoom.upload.MultipartFormDataRequest;
 import javazoom.upload.UploadBean;
+import javazoom.upload.UploadParameters;
 @WebServlet("/uploadurl")
 public class EmployeeUpload extends HttpServlet {
+	private static final String QUERRY = "INSERT INTO EMP_DETAILS VALUES(SE1.NEXTVAL,?,?,?,?)";
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter pw = res.getWriter();//create a IO print writer object
@@ -36,7 +44,37 @@ public class EmployeeUpload extends HttpServlet {
 		//complete file uploading
 		upb.store(mpfd);
 		//display successfully
-		pw.println("<b>Successfully File uploaded</b>");
+		Vector<UploadParameters> vector = upb.getHistory();
+		ArrayList<String> fileList = new ArrayList<String>();
+		vector.forEach(up->{
+			fileList.add("E:/store/"+up.getFilename());
+		});
+		// Write jdbc code to form data and  file location to db table as record
+		// load jdbc
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		try(Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL","c##tapasrout","routtapas1");
+				PreparedStatement ps = con.prepareStatement(QUERRY)){
+			if(ps!=null) {
+				ps.setString(1, name);
+				ps.setString(2, add);
+				ps.setString(3,fileList.get(0));
+				ps.setString(4, fileList.get(1));
+			}
+			try {
+				int rs = ps.executeUpdate();
+				if(rs==1) 
+					pw.println("<b>Successfully File uploaded</b>");
+				else
+					pw.println("<b>File uploading failed</b>");
+				
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			pw.println("<h3 style='color:red;text-align:center'>Error in DB connection</h3>");
+			}
 		}//try
 		catch(Exception e) {
 			e.printStackTrace();

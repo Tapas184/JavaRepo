@@ -2,7 +2,7 @@
 <html>
     <body>
         <h3 style="background-color: chocolate;color: darkblue;text-align: center;width: 300px;height: 25px;">New Registration Form</h3>
-       <form action="uploadurl" method="POST"onsubmit="return validate(this)">
+       <form action="uploadurl" method="POST"enctype="multipart/form-data"onsubmit="return validate(this)">
         <table bgcolor="pink" align="center" border="">
            <tr>
             <td><b style="color:red">*</b>Person Name::</td>
@@ -13,11 +13,11 @@
             <td><input type="text" name="eadd" placeholder="Enter Adress"></td>
            </tr>
            <tr>
-            <td><b style="color:red">*</b>Upload resume</td>
+            <td><b style="color:red">*</b>Upload resume:</td>
             <td><input type="file" name="eresume"></td>
            </tr>
            <tr>
-            <td><b style="color:red">*</b>Upload photo</td>
+            <td><b style="color:red">*</b>Upload photo:</td>
             <td><input type="file" name="ephoto"></td>
            </tr>
            <tr>
