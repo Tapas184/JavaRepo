@@ -5,12 +5,12 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +21,6 @@ import javazoom.upload.UploadParameters;
 @WebServlet("/uploadurl")
 public class EmployeeUpload extends HttpServlet {
 	private static final String QUERRY = "INSERT INTO EMP_DETAILS VALUES(SE1.NEXTVAL,?,?,?,?)";
-	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter pw = res.getWriter();//create a IO print writer object
 		//set content type (txt/html)
@@ -49,6 +48,13 @@ public class EmployeeUpload extends HttpServlet {
 		vector.forEach(up->{
 			fileList.add("E:/store/"+up.getFilename());
 		});
+		Cookie c1 = new Cookie("Name",name);
+		Cookie c2 = new Cookie("Address",add);
+		c1.setMaxAge(6000);
+		c2.setMaxAge(5000);
+		res.addCookie(c1);
+		res.addCookie(c2);
+		
 		// Write jdbc code to form data and  file location to db table as record
 		// load jdbc
 		Class.forName("oracle.jdbc.driver.OracleDriver");

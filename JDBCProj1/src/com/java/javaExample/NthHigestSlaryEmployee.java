@@ -19,7 +19,9 @@ public class NthHigestSlaryEmployee {
 		}
 		
 		for(int i = size-2;i<=0;i--) {
-			if(fa[i]!=fa[size-1])
+			if(fa[i]!=fa[size-1]) {
+			    
+			}
 		}
 	}
 	
