@@ -1,6 +1,5 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="oracle.jdbc.proxy.annotation.Pre"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%!
@@ -14,7 +13,7 @@ private static final String SELECT_QUERY = " SELECT (SL_NO,NAME,AGE,EMAILID) FRO
      //get servlect config object
      ServletConfig cfg = getServletConfig();
      //read init param value from xml files
-     String driver = cfg.getInitParameter("driver");
+     String driver = cfg.getInitParameter("driverClass");
      String url = cfg.getInitParameter("url");
      String userName = cfg.getInitParameter("username");
      String passWord = cfg.getInitParameter("password");
