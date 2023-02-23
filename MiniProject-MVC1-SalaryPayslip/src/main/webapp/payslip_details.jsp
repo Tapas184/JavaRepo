@@ -1,6 +1,6 @@
 <%@ page import="com.nt.beans.*,com.nt.services.*"%>
 <!-- creates and locate java bean id -->
-<jsp:useBean id="emp" class="com.nt.beans.Employee" scope="request"/>
+<jsp:useBean id="emp" class="com.nt.beans.FoodItems" scope="request"/>
 
 <!-- Write formdata to javaBean class object -->
 <jsp:setProperty property="*" name="emp"/>
