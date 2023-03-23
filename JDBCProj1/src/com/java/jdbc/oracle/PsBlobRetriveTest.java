@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import org.apache.commons.io.IOUtils;
 
+
 public class PsBlobRetriveTest {
 	// Write a query for prepared statement
 	private static final String ORACLE_RETRIVE_QUERY = "SELECT ENAME,JOB,EPHOTO FROM EMP WHERE EMPNO=?";

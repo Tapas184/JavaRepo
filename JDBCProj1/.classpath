@@ -12,6 +12,6 @@
 	<classpathentry kind="lib" path="E:/software/uploadbean1.9/WEB-INF/lib/fileupload.jar"/>
 	<classpathentry kind="lib" path="E:/software/uploadbean1.9/WEB-INF/lib/struts.jar"/>
 	<classpathentry kind="lib" path="E:/software/uploadbean1.9/WEB-INF/lib/uploadbean.jar"/>
-	<classpathentry kind="lib" path="E:/software/uploadbean1.9.zip"/>
+	<classpathentry kind="lib" path="E:/software/project related jars/commons-io-2.11.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

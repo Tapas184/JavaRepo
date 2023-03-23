@@ -13,7 +13,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="E:/software/lombok-1.18.26.jar"/>
-	<classpathentry kind="lib" path="D:/Tomcat 9.0/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="E:/software/project related jars/lombok-1.18.26.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat 9.0.52/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
